@@ -1,0 +1,22 @@
+<div class="container">
+  <h4 class="text-center">Prueba IT</h4>
+  <form [formGroup]="form" (ngSubmit)="processText()">
+    <div class="form-group row">
+      <label class="col-form-label col-2">Número:</label>
+      <div class="col-5">
+        <input formControlName="number" id="number" class="form-control" type="text" autocomplete="off" />
+      </div>      
+      <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Enviar</button>
+    </div>
+    <div class="form-group row">
+      <pre class="col-10 border border-light">
+        <div *ngIf="f.number.touched && f.number.invalid">        
+          <div *ngIf="f.number.errors.pattern">Ingrese  solo números</div>          
+          <div *ngIf="f.number.errors.maxlength">Solo se permiten 16 caracteres maxímo</div>
+          <div *ngIf="f.number.errors.minlength">Solo se permiten 14 caracteres minimo</div>
+        </div>
+      </pre>
+    </div>    
+  </form>  
+</div>
+<router-outlet></router-outlet>
